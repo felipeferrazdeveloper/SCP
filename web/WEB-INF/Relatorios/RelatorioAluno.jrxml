@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioAluno" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6a521ef8-5a14-4d6a-8103-75543501592b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     aluno.`idAluno` AS aluno_idAluno,
+     aluno.`idCurso` AS aluno_idCurso,
+     aluno.`idProjeto` AS aluno_idProjeto,
+     aluno.`nome` AS aluno_nome,
+     aluno.`identidade` AS aluno_identidade,
+     aluno.`data_emissao_id` AS aluno_data_emissao_id,
+     aluno.`data_expedicao_id` AS aluno_data_expedicao_id,
+     aluno.`orgao_expedidor` AS aluno_orgao_expedidor,
+     aluno.`cpf` AS aluno_cpf,
+     aluno.`nascimento` AS aluno_nascimento,
+     aluno.`matricula` AS aluno_matricula,
+     aluno.`naturalidade` AS aluno_naturalidade,
+     aluno.`nacionalidade` AS aluno_nacionalidade,
+     aluno.`estado` AS aluno_estado,
+     aluno.`cidade` AS aluno_cidade,
+     aluno.`cep` AS aluno_cep,
+     aluno.`rua` AS aluno_rua,
+     aluno.`numero` AS aluno_numero,
+     aluno.`complemento` AS aluno_complemento,
+     aluno.`bairro` AS aluno_bairro,
+     aluno.`telefoneResidencial` AS aluno_telefoneResidencial,
+     aluno.`celular` AS aluno_celular,
+     aluno.`email` AS aluno_email,
+     aluno.`situacaoMilitar` AS aluno_situacaoMilitar,
+     aluno.`certidaoMilitar` AS aluno_certidaoMilitar,
+     aluno.`localTrabalho` AS aluno_localTrabalho,
+     aluno.`telefoneTrabalho` AS aluno_telefoneTrabalho,
+     aluno.`banco` AS aluno_banco,
+     aluno.`agencia` AS aluno_agencia,
+     aluno.`contaCorrente` AS aluno_contaCorrente,
+     aluno.`secaoEleitoral` AS aluno_secaoEleitoral,
+     aluno.`tituloEleitor` AS aluno_tituloEleitor,
+     aluno.`zonaEleitoral` AS aluno_zonaEleitoral
+FROM
+     `aluno` aluno]]>
+	</queryString>
+	<field name="aluno_idAluno" class="java.lang.Integer"/>
+	<field name="aluno_nome" class="java.lang.String"/>
+	<field name="aluno_matricula" class="java.lang.String"/>
+	<group name="aluno_nome">
+		<groupExpression><![CDATA[$F{aluno_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="35d1d4b9-20b2-432c-94bc-ef27fdf4482e"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aluno_nome}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="7b666e1f-b9c7-451c-8541-2127e46ddd3a"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="c707b9c8-f876-4dd1-9d40-d46c926ee6b1"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="0ee2d4ee-3ecb-48f9-85a5-317007441abb"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[SCP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="0628578a-a601-4791-bde7-cd5684a6bfd0"/>
+				<text><![CDATA[Aluno]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="c54db502-388f-4db4-a480-bf4503e27b20"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="277" height="15" uuid="4a2bb689-d342-49ff-8cc9-08cff1df31b2"/>
+				<text><![CDATA[aluno_idAluno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="277" y="19" width="277" height="15" uuid="89b49055-c23a-46b6-b79f-9dc16fe48230"/>
+				<text><![CDATA[aluno_matricula]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="b6940436-6a45-44e7-8642-e865b93ac992"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="277" height="15" uuid="7c3f1933-0cc0-44ee-b569-8f2660b7d895"/>
+				<textFieldExpression><![CDATA[$F{aluno_idAluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="277" y="0" width="277" height="15" uuid="212e1b4f-3029-468f-9239-09622708fd0d"/>
+				<textFieldExpression><![CDATA[$F{aluno_matricula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fa4265d6-a63b-47aa-9bac-af3108ff2b10"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="d4c1096f-2f2f-464f-a791-9d188ad87465"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="b4ee3def-4191-4d0c-8cdd-bf9716dba7b4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="3dfd2846-379c-40e0-bf28-5d45db0f5fdb"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

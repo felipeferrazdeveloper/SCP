@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioEditalDiretoriaParemetro" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f3ae70e-4b0d-4483-8d25-eb7149b05632">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Codigo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     edital.`idEdital` AS edital_idEdital,
+     edital.`idDiretoria` AS edital_idDiretoria,
+     edital.`numero` AS edital_numero,
+     edital.`inicio` AS edital_inicio,
+     edital.`fim` AS edital_fim,
+     edital.`descricao` AS edital_descricao,
+     diretoria.`idDiretoria` AS diretoria_idDiretoria,
+     diretoria.`nome` AS diretoria_nome
+FROM
+     `diretoria` diretoria INNER JOIN `edital` edital ON diretoria.`idDiretoria` = edital.`idDiretoria`
+Where $P{Codigo} = edital.`idEdital`]]>
+	</queryString>
+	<field name="edital_idEdital" class="java.lang.Integer"/>
+	<field name="edital_idDiretoria" class="java.lang.Integer"/>
+	<field name="edital_numero" class="java.lang.String"/>
+	<field name="edital_inicio" class="java.lang.String"/>
+	<field name="edital_fim" class="java.lang.String"/>
+	<field name="edital_descricao" class="java.lang.String"/>
+	<field name="diretoria_idDiretoria" class="java.lang.Integer"/>
+	<field name="diretoria_nome" class="java.lang.String"/>
+	<group name="diretoria_nome">
+		<groupExpression><![CDATA[$F{diretoria_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="d5cba29c-8bcd-4bde-84e0-331f5c0e3db1"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{diretoria_nome}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="c059110c-58ec-46f8-85a5-6370f18e50d4"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="5cb3d93a-1b94-4962-a372-79dc2da036ca"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="06f2105e-d09b-4b63-ab54-eaa5cd8d994b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[SCP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="a33e6c89-68a5-4765-859b-c9feba4eb3ec"/>
+				<text><![CDATA[Edital / Diretoria]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="cd95e579-6478-4751-866e-07bf837fe13d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="555" height="15" uuid="553d0e5c-64ae-4bc4-b5b4-5af96fea5b2a"/>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="77e7a75e-12ae-4de7-9009-10b3f858f5ff"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="555" height="15" uuid="1e735605-3a54-4c8d-809f-4be7d964132c"/>
+				<textFieldExpression><![CDATA[$F{edital_numero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="b3356ffe-d5bf-4f60-ad2f-b3690bfa6c4e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="aba7de28-d2bb-44e1-8cbb-a26536e4a6f4"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="3fc92673-0f1d-43dd-b7ba-3ec7c033fe9f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="d777ac77-284c-4880-b94c-33902eecb83e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

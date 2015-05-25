@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioProjetoCompletoParametro" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="125f3b74-291b-48c9-a9fc-7cf43eda8f20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Codigo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     aluno.`idAluno` AS aluno_idAluno,
+     aluno.`nome` AS aluno_nome,
+     aluno.`identidade` AS aluno_identidade,
+     aluno.`data_emissao_id` AS aluno_data_emissao_id,
+     aluno.`data_expedicao_id` AS aluno_data_expedicao_id,
+     aluno.`orgao_expedidor` AS aluno_orgao_expedidor,
+     aluno.`cpf` AS aluno_cpf,
+     aluno.`nascimento` AS aluno_nascimento,
+     aluno.`matricula` AS aluno_matricula,
+     aluno.`naturalidade` AS aluno_naturalidade,
+     aluno.`nacionalidade` AS aluno_nacionalidade,
+     aluno.`estado` AS aluno_estado,
+     aluno.`cidade` AS aluno_cidade,
+     aluno.`cep` AS aluno_cep,
+     aluno.`rua` AS aluno_rua,
+     aluno.`numero` AS aluno_numero,
+     aluno.`complemento` AS aluno_complemento,
+     aluno.`bairro` AS aluno_bairro,
+     aluno.`telefoneResidencial` AS aluno_telefoneResidencial,
+     aluno.`celular` AS aluno_celular,
+     aluno.`email` AS aluno_email,
+     aluno.`situacaoMilitar` AS aluno_situacaoMilitar,
+     aluno.`certidaoMilitar` AS aluno_certidaoMilitar,
+     aluno.`localTrabalho` AS aluno_localTrabalho,
+     aluno.`telefoneTrabalho` AS aluno_telefoneTrabalho,
+     aluno.`banco` AS aluno_banco,
+     aluno.`agencia` AS aluno_agencia,
+     aluno.`contaCorrente` AS aluno_contaCorrente,
+     aluno.`idCurso` AS aluno_idCurso,
+     aluno.`idProjeto` AS aluno_idProjeto,
+     aluno.`secaoEleitoral` AS aluno_secaoEleitoral,
+     aluno.`tituloEleitor` AS aluno_tituloEleitor,
+     aluno.`zonaEleitoral` AS aluno_zonaEleitoral,
+     aluno.`pai` AS aluno_pai,
+     aluno.`mae` AS aluno_mae,
+     edital.`idEdital` AS edital_idEdital,
+     edital.`idDiretoria` AS edital_idDiretoria,
+     edital.`numero` AS edital_numero,
+     edital.`inicio` AS edital_inicio,
+     edital.`fim` AS edital_fim,
+     edital.`descricao` AS edital_descricao,
+     professor.`idProfessor` AS professor_idProfessor,
+     professor.`siape` AS professor_siape,
+     professor.`Nome` AS professor_Nome,
+     professor.`CPF` AS professor_CPF,
+     professor.`Data_Nascimento` AS professor_Data_Nascimento,
+     professor.`Nacionalide` AS professor_Nacionalide,
+     professor.`Email` AS professor_Email,
+     professor.`HomePage` AS professor_HomePage,
+     professor.`Campus` AS professor_Campus,
+     professor.`Telefone_Residencial` AS professor_Telefone_Residencial,
+     professor.`Celular` AS professor_Celular,
+     professor.`Cidade` AS professor_Cidade,
+     projeto.`idProjeto` AS projeto_idProjeto,
+     projeto.`nome` AS projeto_nome,
+     projeto.`palavraChave` AS projeto_palavraChave,
+     projeto.`areaConhecimento` AS projeto_areaConhecimento,
+     projeto.`descricao` AS projeto_descricao,
+     projeto.`situacao` AS projeto_situacao,
+     projeto.`caracterizacaoProblema` AS projeto_caracterizacaoProblema,
+     projeto.`referencialTeorico` AS projeto_referencialTeorico,
+     projeto.`objetivos` AS projeto_objetivos,
+     projeto.`metodologia` AS projeto_metodologia,
+     projeto.`resultadoEsperado` AS projeto_resultadoEsperado,
+     projeto.`inicio` AS projeto_inicio,
+     projeto.`fim` AS projeto_fim,
+     projeto.`orcamento` AS projeto_orcamento,
+     projeto.`referenciasBibliograficas` AS projeto_referenciasBibliograficas,
+     projeto.`idEdital` AS projeto_idEdital,
+     projeto.`idProfessor` AS projeto_idProfessor,
+     projeto.`idAluno` AS projeto_idAluno
+FROM
+     `aluno` aluno INNER JOIN `projeto` projeto ON aluno.`idAluno` = projeto.`idAluno`
+     INNER JOIN `edital` edital ON projeto.`idEdital` = edital.`idEdital`
+     INNER JOIN `professor` professor ON projeto.`idProfessor` = professor.`idProfessor`
+where $P{Codigo} = projeto.`idProjeto`]]>
+	</queryString>
+	<field name="aluno_idAluno" class="java.lang.Integer"/>
+	<field name="aluno_nome" class="java.lang.String"/>
+	<field name="aluno_identidade" class="java.lang.String"/>
+	<field name="aluno_data_emissao_id" class="java.lang.String"/>
+	<field name="aluno_data_expedicao_id" class="java.lang.String"/>
+	<field name="aluno_orgao_expedidor" class="java.lang.String"/>
+	<field name="aluno_cpf" class="java.lang.String"/>
+	<field name="aluno_nascimento" class="java.lang.String"/>
+	<field name="aluno_matricula" class="java.lang.String"/>
+	<field name="aluno_naturalidade" class="java.lang.String"/>
+	<field name="aluno_nacionalidade" class="java.lang.String"/>
+	<field name="aluno_estado" class="java.lang.String"/>
+	<field name="aluno_cidade" class="java.lang.String"/>
+	<field name="aluno_cep" class="java.lang.String"/>
+	<field name="aluno_rua" class="java.lang.String"/>
+	<field name="aluno_numero" class="java.lang.String"/>
+	<field name="aluno_complemento" class="java.lang.String"/>
+	<field name="aluno_bairro" class="java.lang.String"/>
+	<field name="aluno_telefoneResidencial" class="java.lang.String"/>
+	<field name="aluno_celular" class="java.lang.String"/>
+	<field name="aluno_email" class="java.lang.String"/>
+	<field name="aluno_situacaoMilitar" class="java.lang.String"/>
+	<field name="aluno_certidaoMilitar" class="java.lang.String"/>
+	<field name="aluno_localTrabalho" class="java.lang.String"/>
+	<field name="aluno_telefoneTrabalho" class="java.lang.String"/>
+	<field name="aluno_banco" class="java.lang.String"/>
+	<field name="aluno_agencia" class="java.lang.String"/>
+	<field name="aluno_contaCorrente" class="java.lang.String"/>
+	<field name="aluno_idCurso" class="java.lang.Integer"/>
+	<field name="aluno_idProjeto" class="java.lang.Integer"/>
+	<field name="aluno_secaoEleitoral" class="java.lang.String"/>
+	<field name="aluno_tituloEleitor" class="java.lang.String"/>
+	<field name="aluno_zonaEleitoral" class="java.lang.String"/>
+	<field name="aluno_pai" class="java.lang.Integer"/>
+	<field name="aluno_mae" class="java.lang.Integer"/>
+	<field name="edital_idEdital" class="java.lang.Integer"/>
+	<field name="edital_idDiretoria" class="java.lang.Integer"/>
+	<field name="edital_numero" class="java.lang.String"/>
+	<field name="edital_inicio" class="java.lang.String"/>
+	<field name="edital_fim" class="java.lang.String"/>
+	<field name="edital_descricao" class="java.lang.String"/>
+	<field name="professor_idProfessor" class="java.lang.Integer"/>
+	<field name="professor_siape" class="java.lang.String"/>
+	<field name="professor_Nome" class="java.lang.String"/>
+	<field name="professor_CPF" class="java.lang.String"/>
+	<field name="professor_Data_Nascimento" class="java.lang.String"/>
+	<field name="professor_Nacionalide" class="java.lang.String"/>
+	<field name="professor_Email" class="java.lang.String"/>
+	<field name="professor_HomePage" class="java.lang.String"/>
+	<field name="professor_Campus" class="java.lang.String"/>
+	<field name="professor_Telefone_Residencial" class="java.lang.String"/>
+	<field name="professor_Celular" class="java.lang.String"/>
+	<field name="professor_Cidade" class="java.lang.String"/>
+	<field name="projeto_idProjeto" class="java.lang.Integer"/>
+	<field name="projeto_nome" class="java.lang.String"/>
+	<field name="projeto_palavraChave" class="java.lang.String"/>
+	<field name="projeto_areaConhecimento" class="java.lang.String"/>
+	<field name="projeto_descricao" class="java.lang.String"/>
+	<field name="projeto_situacao" class="java.lang.String"/>
+	<field name="projeto_caracterizacaoProblema" class="java.lang.String"/>
+	<field name="projeto_referencialTeorico" class="java.lang.String"/>
+	<field name="projeto_objetivos" class="java.lang.String"/>
+	<field name="projeto_metodologia" class="java.lang.String"/>
+	<field name="projeto_resultadoEsperado" class="java.lang.String"/>
+	<field name="projeto_inicio" class="java.lang.String"/>
+	<field name="projeto_fim" class="java.lang.String"/>
+	<field name="projeto_orcamento" class="java.lang.String"/>
+	<field name="projeto_referenciasBibliograficas" class="java.lang.String"/>
+	<field name="projeto_idEdital" class="java.lang.Integer"/>
+	<field name="projeto_idProfessor" class="java.lang.Integer"/>
+	<field name="projeto_idAluno" class="java.lang.Integer"/>
+	<group name="projeto_nome">
+		<groupExpression><![CDATA[$F{projeto_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="721" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="0e104e97-e29b-409c-9ed6-d7d84174ac1a"/>
+					<textField isStretchWithOverflow="true">
+						<reportElement style="SubTitle" x="2" y="0" width="695" height="24" forecolor="#FFFFFF" uuid="0b1caad1-e66d-4517-9927-72d3b8e0a86f"/>
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{projeto_nome}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<rectangle>
+					<reportElement x="725" y="3" width="77" height="24" backcolor="#666666" uuid="d8c03035-772d-40c0-9c13-92955f7d27ba"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="725" y="0" width="77" height="102" uuid="292170e5-c653-4ff3-bb7d-f594d0740453"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="13e8372e-b30a-4dcd-90ba-84b43a41b702"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="7d0836f6-b503-4568-893f-6d4e07bcffd2"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[SCP]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="57cc110d-181e-4f46-86d7-903e7754df3f"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Projeto Completo]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="13eb49fb-043a-4ece-a3a8-e99774aea310"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="41e75542-1d55-44d1-9d3b-cca6b03b5ccd"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="265" height="18" forecolor="#000000" uuid="93dde73b-cab4-461c-b44c-254562ed2f85"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Aluno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="265" y="0" width="265" height="18" forecolor="#000000" uuid="d3c76fe9-1dce-4be2-9bb5-14854bcd4f47"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Edital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="530" y="0" width="265" height="18" forecolor="#000000" uuid="815545b8-4c01-4b1a-8c3c-1aad802ff154"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Professor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="66ea5cee-607d-4bc0-a9ad-fa3f7383d049"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="265" height="18" uuid="4f5e5156-79cb-4398-b272-187c6a72430e"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aluno_nome}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="265" y="0" width="265" height="18" uuid="41061447-ae7a-4f5a-a28b-b20ac13fbde2"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{edital_numero}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="530" y="0" width="265" height="18" uuid="e4d80eda-6206-482a-add1-0ad08952a499"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professor_Nome}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="9c5645e3-f312-42de-9bcf-692c1093d31a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="b4b45faa-6317-42bf-adcb-8748948b8381"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="04d0d229-8fb6-4fda-b8c9-01f61f0efeef"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="4ae77553-223b-4e1b-9d39-48ee8a8ee64d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="1d07e808-50e2-45b8-89a4-06803facb442"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

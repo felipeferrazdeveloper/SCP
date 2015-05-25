@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioParametroAluno2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13fa8629-a492-4cbc-8c94-ec7168ebf13c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="valorParametro" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PAR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     edital.`idDiretoria` AS edital_idDiretoria,
+     edital.`numero` AS edital_numero,
+     diretoria.`nome` AS diretoria_nome
+FROM
+     `diretoria` diretoria INNER JOIN `edital` edital ON diretoria.`idDiretoria` = edital.`idDiretoria`
+WHERE
+diretoria.$P!{PAR} = $P{valorParametro}]]>
+	</queryString>
+	<field name="edital_idDiretoria" class="java.lang.Integer"/>
+	<field name="edital_numero" class="java.lang.String"/>
+	<field name="diretoria_nome" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="194" y="16" width="197" height="27" uuid="64613c9c-3838-48c8-9dc6-8fc254dc1e12"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Edital]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="20" uuid="d5982447-cd1a-4c90-aaaa-cf2df237dd05"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero Edital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="30" width="100" height="20" uuid="b2355577-9a15-4619-b823-901880c1cde8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diretoria]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31">
+			<textField>
+				<reportElement x="10" y="11" width="100" height="20" uuid="06009d83-4da5-43d4-9baf-2ac70277ba61"/>
+				<textFieldExpression><![CDATA[$F{edital_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="11" width="100" height="20" uuid="8b7bd136-b367-4b81-870d-f22c52db9196"/>
+				<textFieldExpression><![CDATA[$F{diretoria_nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

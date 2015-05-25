@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioParametroAluno2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13fa8629-a492-4cbc-8c94-ec7168ebf13c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="valorParametro" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PAR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     aluno.`nome` AS aluno_nome,
+     aluno.`matricula` AS aluno_matricula,
+     aluno.`idCurso` AS aluno_idCurso,
+     aluno.`idProjeto` AS aluno_idProjeto
+FROM
+     `aluno` aluno
+WHERE
+    $P!{PAR} = $P{valorParametro}]]>
+	</queryString>
+	<field name="aluno_nome" class="java.lang.String"/>
+	<field name="aluno_matricula" class="java.lang.String"/>
+	<field name="aluno_idCurso" class="java.lang.Integer"/>
+	<field name="aluno_idProjeto" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="194" y="16" width="197" height="27" uuid="64613c9c-3838-48c8-9dc6-8fc254dc1e12"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Aluno]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="20" uuid="d5982447-cd1a-4c90-aaaa-cf2df237dd05"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="30" width="100" height="20" uuid="b2355577-9a15-4619-b823-901880c1cde8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matricula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="30" width="100" height="20" uuid="cde1a957-3d53-411c-9567-f2a4d87b4e74"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="30" width="100" height="20" uuid="8e986c5a-585d-49c2-9478-78fdd50920e6"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Curso]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31">
+			<textField>
+				<reportElement x="156" y="9" width="100" height="20" uuid="88c3769f-2f91-40f0-8a6c-101fc6494fbe"/>
+				<textFieldExpression><![CDATA[$F{aluno_matricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="9" width="100" height="20" uuid="36324a64-60e6-4279-8cd2-0c1ad068a41f"/>
+				<textFieldExpression><![CDATA[$F{aluno_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="9" width="100" height="20" uuid="4e7cca24-94f8-4a9f-a120-cf1183a4b157"/>
+				<textFieldExpression><![CDATA[$F{aluno_idProjeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="9" width="100" height="20" uuid="2e614504-6508-4b2b-bce4-226f01cf5dfc"/>
+				<textFieldExpression><![CDATA[$F{aluno_idCurso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

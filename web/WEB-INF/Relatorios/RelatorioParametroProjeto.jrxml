@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioParametroAluno2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13fa8629-a492-4cbc-8c94-ec7168ebf13c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="valorParametro" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PAR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     projeto.`nome` AS projeto_nome,
+     projeto.`idEdital` AS projeto_idEdital,
+     projeto.`idProfessor` AS projeto_idProfessor,
+     projeto.`idAluno` AS projeto_idAluno,
+     aluno.`nome` AS aluno_nome,
+     professor.`Nome` AS professor_Nome,
+     professor.`siape` AS professor_siape,
+     edital.`numero` AS edital_numero,
+     aluno.`matricula` AS aluno_matricula
+FROM
+     `aluno` aluno INNER JOIN `projeto` projeto ON aluno.`idAluno` = projeto.`idAluno`
+     INNER JOIN `professor` professor ON projeto.`idProfessor` = professor.`idProfessor`
+     INNER JOIN `edital` edital ON projeto.`idEdital` = edital.`idEdital`
+WHERE
+     projeto.`$P!{PAR}` = $P{valorParametro}]]>
+	</queryString>
+	<field name="projeto_nome" class="java.lang.String"/>
+	<field name="projeto_idEdital" class="java.lang.Integer"/>
+	<field name="projeto_idProfessor" class="java.lang.Integer"/>
+	<field name="projeto_idAluno" class="java.lang.Integer"/>
+	<field name="aluno_nome" class="java.lang.String"/>
+	<field name="professor_Nome" class="java.lang.String"/>
+	<field name="professor_siape" class="java.lang.String"/>
+	<field name="edital_numero" class="java.lang.String"/>
+	<field name="aluno_matricula" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="194" y="16" width="197" height="27" uuid="64613c9c-3838-48c8-9dc6-8fc254dc1e12"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Projeto]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="16" y="30" width="100" height="20" uuid="3c329630-1eca-4168-805f-509ab7a5b083"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Projeto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="30" width="100" height="20" uuid="ea4ee47f-f7b4-4561-843d-f9621de52e51"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Edital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="29" width="134" height="20" uuid="67b9b38e-3ed1-4dd7-b848-2a2209765aad"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Professor (siape/nome)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="30" width="139" height="20" uuid="c3a5e333-f3ec-4cf0-8305-323bb85d4698"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aluno (matricula/nome)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="49" width="520" height="1" uuid="d6558a65-b21d-403f-b28a-b874e77ea2b3"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="55">
+			<textField>
+				<reportElement x="16" y="11" width="100" height="20" uuid="d02cd41a-3064-4648-8cb7-222e0794f017"/>
+				<textFieldExpression><![CDATA[$F{projeto_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="31" width="100" height="20" uuid="5782bfb8-c3fb-4021-b462-f6cf7d8af57a"/>
+				<textFieldExpression><![CDATA[$F{professor_Nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="100" height="20" uuid="6071ef5b-531e-49f8-8372-741a22717338"/>
+				<textFieldExpression><![CDATA[$F{professor_siape}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="11" width="100" height="20" uuid="e3e49604-7050-461f-887f-5613f6512f36"/>
+				<textFieldExpression><![CDATA[$F{edital_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="0" width="100" height="20" uuid="43dff5d0-893a-4f89-b82e-ee468f8a9505"/>
+				<textFieldExpression><![CDATA[$F{aluno_matricula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="31" width="100" height="20" uuid="3a551e6e-03ff-4390-85ff-0f09059fa667"/>
+				<textFieldExpression><![CDATA[$F{aluno_nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="51" width="520" height="1" uuid="18fcd8da-64c2-497e-aac2-83d538a9a3d8"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

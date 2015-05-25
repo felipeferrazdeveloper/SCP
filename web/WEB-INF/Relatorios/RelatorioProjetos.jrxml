@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioProjetos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a0b4a274-b295-4b5b-a248-1755472bcdc2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     projeto.`idProjeto` AS projeto_idProjeto,
+     projeto.`nome` AS projeto_nome,
+     projeto.`palavraChave` AS projeto_palavraChave,
+     projeto.`areaConhecimento` AS projeto_areaConhecimento,
+     projeto.`descricao` AS projeto_descricao,
+     projeto.`situacao` AS projeto_situacao,
+     projeto.`caracterizacaoProblema` AS projeto_caracterizacaoProblema,
+     projeto.`referencialTeorico` AS projeto_referencialTeorico,
+     projeto.`objetivos` AS projeto_objetivos,
+     projeto.`metodologia` AS projeto_metodologia,
+     projeto.`resultadoEsperado` AS projeto_resultadoEsperado,
+     projeto.`inicio` AS projeto_inicio,
+     projeto.`fim` AS projeto_fim,
+     projeto.`orcamento` AS projeto_orcamento,
+     projeto.`referenciasBibliograficas` AS projeto_referenciasBibliograficas,
+     projeto.`idEdital` AS projeto_idEdital,
+     projeto.`idProfessor` AS projeto_idProfessor,
+     projeto.`idAluno` AS projeto_idAluno
+FROM
+     `projeto` projeto]]>
+	</queryString>
+	<field name="projeto_idProjeto" class="java.lang.Integer"/>
+	<field name="projeto_nome" class="java.lang.String"/>
+	<group name="projeto_nome">
+		<groupExpression><![CDATA[$F{projeto_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="646001a3-dcfb-4eff-a584-1c9448079de8"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{projeto_nome}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="2edb2c37-a808-4ad9-836d-58c3a70e1156"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="f1030993-249f-49c7-9e7b-2b6c2879eb75"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="9054ca12-ee64-497c-8f61-90072c5dd60f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[SCP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="ed4bd261-0fbe-44df-a82a-ae95d9fb8c59"/>
+				<text><![CDATA[Projetos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="433f74f8-72f2-415d-b0cc-ae7668dd7ac3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="555" height="15" uuid="56b0546b-ece5-4308-9cc5-9aae5f2b4230"/>
+				<text><![CDATA[projeto_idProjeto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="545d3547-f5e6-44a8-9d16-e4fbd569cdb5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="555" height="15" uuid="f762854a-aa6d-4de7-a03d-9f0e0d0a4840"/>
+				<textFieldExpression><![CDATA[$F{projeto_idProjeto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="caffc86a-0d6a-4e2d-b091-6d789cf3a31f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="6ae28941-f4d8-40a2-811f-4d3aa744507a"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="555f316d-1da3-4a4a-96f8-99047341cb8f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="a0f5501a-e899-4626-89c5-873d80679ff4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
