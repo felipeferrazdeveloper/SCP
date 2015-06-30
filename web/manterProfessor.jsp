@@ -48,7 +48,7 @@
                                   method="post" name="frmManterProfessor" >
                                 
                             <div class="form-group col-md-4">
-                                <label class="control-label" for="idProfessor" id="id">idProfessor:</label>
+                                <label class="control-label" for="idProfessor" id="id">ID Professor:</label>
                                 <input class="form-control input-sm" type="text" id="idProfessor" name="idProfessor" value="${professor.idProfessor}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>/>
                             </div>
                             <div class="form-group col-md-4">

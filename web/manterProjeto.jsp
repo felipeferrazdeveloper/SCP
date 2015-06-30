@@ -34,7 +34,7 @@
                 <form action="ManterProjetoController?acao=confirmarOperacao&operacao=${operacao}" 
                       method="post" name="frmManterAluno" onSubmit="validarFormulario(this)">
                     
-                       <h4>Bolsista</h4>
+                       <h4>Projeto</h4>
                     
                     <div class="form-group col-md-4">   
                         <label class="control-label" id="idAluno">ID Projeto</label>    

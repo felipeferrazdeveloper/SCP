@@ -28,6 +28,7 @@ public class CursoDAO{
         session.beginTransaction();
         session.clear();
         Curso curso = (Curso) session.createQuery("from Curso where idCurso = "+ idCurso).list().get(0);
+        session.close();
         return curso;
     }
     
